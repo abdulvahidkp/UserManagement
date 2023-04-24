@@ -22,7 +22,8 @@ function Table() {
     const token = localStorage.getItem("admin");
     try {
       const {data} = await axios.delete(`/api/admin/users/${_id}`,{headers:{Authorization:token}})  
-      
+      const newDetails = users.filter(per=>per._id !== _id)
+      setUsers(newDetails)
     } catch (error) {
         console.log(error)
     }
@@ -51,7 +52,7 @@ function Table() {
           </tr>
         </thead>
         <tbody>
-          {users.length &&
+          {users?.length &&
             users.map((user) => (
               <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -61,7 +62,7 @@ function Table() {
                 <td className="px-6 py-4">{user.mobile}</td>
                 <td className="px-6 py-4">{user.place}</td>
                 <td className="px-6 py-4 text-right">
-                  <a onClick={()=>handleDelete(_id)} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                  <a onClick={()=>handleDelete(user._id)} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">
                     Delete
                   </a>
                 </td>
