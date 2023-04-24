@@ -1,8 +1,9 @@
 import React from 'react'
+import SigninPart from '../../components/SigninPart'
 
 function UserSignin() {
   return (
-    <div>UserSignin</div>
+    <SigninPart/>
   )
 }
 

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "../api/axios";
 import HeadAndSub from "./HeadAndSub";
 import InputComponent from "./InputComponent";
 import SignBottom from "./SignBottom";
 import Signbutton from "./Signbutton";
+import toast, { Toaster } from "react-hot-toast";
 
 function SignupComponent() {
   const initialState = {
@@ -18,16 +19,29 @@ function SignupComponent() {
   const [user, setUser] = useState(initialState);
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState("");
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!user.name || !user.email || !user.mobile || !user.place || !user.password || loading) return;
     setLoading(true);
     try {
       const { data } = await axios.post("/api/signup", user);
-      console.log(data);
+      if(data.success){
+        setUser({
+            name: "",
+            email: "",
+            mobile: "",
+            place: "",
+            password: "",
+          })
+          toast.success("user signup successful");
+          setTimeout(()=>{
+            navigate('/signin')
+          },2500)
+      }
     } catch (error) {
-      console.log(error.response);
-      setErr(error?.response?.data?.error);
+      console.log(error.message );
+      setErr(error?.response?.data?.error || error?.message);
     } finally {
       setLoading(false);
     }
@@ -40,6 +54,7 @@ function SignupComponent() {
   return (
     <section>
       <div className="pb-0 sm:pb-32">
+      <Toaster position="top-right" />
         <div className="w-screen sm:container mx-auto">
           <div className="flex flex-col sm:flex-row sm:justify-center items-center">
             <div className="py-10 sm:pt-28">

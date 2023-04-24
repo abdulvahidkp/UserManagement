@@ -6,9 +6,9 @@ import InputComponent from "./InputComponent";
 import SignBottom from "./SignBottom";
 import Signbutton from "./Signbutton";
 
-function SigninPart() {
+function AdminSigninPart() {
   const initialState = {
-    email: "",
+    name: "",
     password: "",
   };
 
@@ -24,13 +24,13 @@ function SigninPart() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!user.email || !user.password) return;
+    if (!user.name || !user.password) return;
     setLoading(true);
     try {
-      const { data } = await axios.post("/api/signin", user);
+      const { data } = await axios.post("/api/admin/signin", user);
       console.log(data);
       localStorage.setItem('user',data)
-      navigate('/')
+      navigate('/admin')
     } catch (error) {
       console.log(error.message);
       setErr(error?.response?.data?.message);
@@ -47,17 +47,16 @@ function SigninPart() {
             <div className="py-10 sm:pt-28">
               <div className="rounded-lg sm:shadow-xl w-96 h-auto">
                 <div className="px-10 sm:px-4">
-                  <HeadAndSub head="Signin" sub="Hello, welcome back" />
+                  <HeadAndSub head="Signin" sub="Admin, welcome back" />
                   <form id="signinForm" onSubmit={handleSubmit}>
                     <p className="text-red-800">{err}</p>
-                    <div>
-                      <InputComponent type="email" id="email" value={user.email} setUser={setUser} placeholder="Email" />
+                    <div className="pb-3">
+                      <InputComponent type="text" id="name" value={user.name} setUser={setUser} placeholder="Name" />
                       <InputComponent type="password" id="password" value={user.password} setUser={setUser} placeholder="Password" />
                       <Signbutton text="signin" />
                     </div>
                   </form>
                 </div>
-                <SignBottom text="don't have an account?" loading={loading} link="/signup" btnText="signup" />
               </div>
             </div>
           </div>
@@ -67,4 +66,4 @@ function SigninPart() {
   );
 }
 
-export default SigninPart;
+export default AdminSigninPart;

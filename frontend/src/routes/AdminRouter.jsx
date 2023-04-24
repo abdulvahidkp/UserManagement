@@ -5,7 +5,7 @@ import AdminSignin from "../pages/admin/AdminSignin";
 function AdminRouter() {
   return (
     <Routes>
-      <Route path="/" element={<AdminSignin />} />
+      <Route path="/signin" element={<AdminSignin />} />
     </Routes>
   );
 }
