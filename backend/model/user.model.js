@@ -7,7 +7,8 @@ const userSchema = new mongoose.Schema({
     },
     email:{
         type:String,
-        required:true
+        required:true,
+        unique:true
     },
     mobile:{
         type:String,
@@ -23,4 +24,4 @@ const userSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('users', userModel);
+module.exports = mongoose.model('users', userSchema);
