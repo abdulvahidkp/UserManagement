@@ -1,8 +1,9 @@
 import React from 'react'
+import UserHomePart from '../../components/UserHomePart'
 
 function UserHome() {
   return (
-    <div>UserHome</div>
+    <UserHomePart />
   )
 }
 
