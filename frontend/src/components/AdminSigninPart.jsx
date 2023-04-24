@@ -28,8 +28,7 @@ function AdminSigninPart() {
     setLoading(true);
     try {
       const { data } = await axios.post("/api/admin/signin", user);
-      console.log(data);
-      localStorage.setItem('user',data)
+      localStorage.setItem('admin',data)
       navigate('/admin')
     } catch (error) {
       console.log(error.message);
