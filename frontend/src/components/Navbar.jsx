@@ -18,7 +18,7 @@ function UserNavbar() {
           </div>
           <div className="items-center">
             <button
-              className="bg-emerald-700 text-white font-[Poppins] duration-500 p-1 sm:px-4 py-0 text-xs sm:text-lg sm:py-1 mx-3 sm:mx-4 hover:bg-emerald-800 rounded "
+              className="bg-emerald-700 text-white font-[Poppins] duration-500 p-2 px-4 sm:px-4  text-xs sm:text-lg sm:py-1 mx-3 sm:mx-4 hover:bg-emerald-800 rounded "
               onClick={handleLogout}
             >
               LOGOUT

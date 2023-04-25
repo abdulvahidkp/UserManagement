@@ -1,7 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { CSVLink } from 'react-csv'
 
-function UserNavbar() {
+function UserNavbar({data}) {
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -17,8 +18,9 @@ function UserNavbar() {
             <span className="text-bold text-xl sm:text-3xl italic font-semibold self-center cursor-pointer select-none">S R V - admin</span>
           </div>
           <div className="items-center">
+            <CSVLink className="bg-blue-700 text-white font-[Poppins] duration-500 p-1 sm:px-4 text-xs sm:text-lg sm:py-2 mx-1 sm:mx-4 hover:bg-blue-800 rounded" data={data} onClick={()=> {}} >EXPORT USERLIST</CSVLink>
             <button
-              className="bg-emerald-700 text-white font-[Poppins] duration-500 p-1 sm:px-4 py-0 text-xs sm:text-lg sm:py-1 mx-3 sm:mx-4 hover:bg-emerald-800 rounded "
+              className="bg-emerald-700 text-white font-[Poppins] duration-500 p-1 sm:px-4 text-xs sm:text-lg sm:py-1 mx-1 sm:mx-4 hover:bg-emerald-800 rounded "
               onClick={handleLogout}
             >
               LOGOUT

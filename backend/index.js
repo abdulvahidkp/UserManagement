@@ -9,11 +9,13 @@ const adminRouter = require('./router/admin.router');
 const morgan = require('morgan')
 
 
-mongoose.connect('mongodb://127.0.0.1:27017/srv-userManagement');
+mongoose.connect(process.env.DATABASE);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cors({
+    origin: process.env.CLIENT,
+}));
 app.use(morgan('dev'));
 
 app.use('/api', userRouter);
@@ -22,4 +24,4 @@ app.get('/*', (req, res) => {
     res.send("<h1>invalid api<h1>");
 });
 
-app.listen(PORT, () => console.log(`server connected to ${PORT}`));
+app.listen(PORT, () => console.log(`server connected to ${PORT}`)); 

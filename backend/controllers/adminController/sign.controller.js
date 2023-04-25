@@ -22,7 +22,7 @@ module.exports = {
     },
     getAllUsers: async (req,res) => {
         try {
-            const allUsers = await users.find();
+            const allUsers = await users.find({},{password:0});
             res.status(200).json(allUsers);
         } catch (error) {
             console.log(error.message)

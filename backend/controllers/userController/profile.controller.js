@@ -17,6 +17,10 @@ module.exports = {
             res.status(200).json(user);
         } catch (error) {
             console.log(error.message)
+            if (error.code === 11000) {
+                return res.status(400).json({ message: "error occured", error: 'email already exist' });
+            }
+            console.log(error.message)
             res.status(400).json({ messaage: "error occured", error: error.message });
         }
     }

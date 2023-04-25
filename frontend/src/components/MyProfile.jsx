@@ -54,6 +54,7 @@ function MyProfile() {
       const { data } = await axios.post("/api/user", user,{headers:{Authorization:token}});
         setUser(data);
         setUserDetails(data)
+        setReadOnly(true)
         toast.success("profile updated successfully");
     } catch (error) {
       console.log(error.message);
@@ -71,7 +72,7 @@ function MyProfile() {
     <section>
       <div className="pb-0 sm:pb-32">
         <Toaster position="top-right" />
-        <div className="w-screen sm:container mx-auto">
+        <div className="w-screen mt-8 sm:mt-0 sm:container mx-auto">
           <div className="flex flex-col sm:flex-row sm:justify-center items-center">
             <div className="py-10 sm:pt-28">
               <div className="rounded-lg sm:shadow-xl w-96 h-auto">
@@ -100,7 +101,7 @@ function MyProfile() {
                       ) : (
                         <button
                           type="button"
-                          className="bg-blue-700 text-white font-[Poppins] duration-500 p-1 sm:px-4 py-0 text-xs sm:text-lg sm:py-1 hover:bg-blue-800 rounded"
+                          className="bg-blue-700 text-white font-[Poppins] duration-500 p-2 px-6 p sm:px-4  text-xs sm:text-lg sm:py-1 hover:bg-blue-800 rounded"
                           onClick={() => setReadOnly(false)}
                         >
                           Edit

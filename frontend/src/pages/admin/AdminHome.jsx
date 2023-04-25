@@ -1,12 +1,10 @@
 import React from 'react'
-import Navbar from '../../components/AdminNav'
-import Table from '../../components/Table'
+import AdminLanding from '../../components/Table'
 
 function AdminHome() {
   return (
     <>
-     <Navbar/>
-     <Table/>
+     <AdminLanding/>
     </>
   )
 }
