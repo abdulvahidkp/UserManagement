@@ -1,7 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "srv assesement",
+  "description": "weare userMangement mern",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js"
